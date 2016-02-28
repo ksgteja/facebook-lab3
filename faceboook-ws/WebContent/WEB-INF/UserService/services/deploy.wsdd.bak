@@ -1,0 +1,75 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UserService WSDL service -->
+
+  <service name="User" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services"/>
+      <parameter name="wsdlServiceElement" value="UserService"/>
+      <parameter name="schemaQualified" value="http://services"/>
+      <parameter name="wsdlServicePort" value="User"/>
+      <parameter name="className" value="services.UserSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="User"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="main" qname="operNS:main" xmlns:operNS="http://services" soapAction="" >
+        <parameter qname="pns:args" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="validate" qname="operNS:validate" xmlns:operNS="http://services" returnQName="retNS:validateReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getFriends" qname="operNS:getFriends" xmlns:operNS="http://services" returnQName="retNS:getFriendsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="sendFriendRequest" qname="operNS:sendFriendRequest" xmlns:operNS="http://services" returnQName="retNS:sendFriendRequestReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:senderId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:recieverId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getFriendRequests" qname="operNS:getFriendRequests" xmlns:operNS="http://services" returnQName="retNS:getFriendRequestsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getContactInfo" qname="operNS:getContactInfo" xmlns:operNS="http://services" returnQName="retNS:getContactInfoReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="signup" qname="operNS:signup" xmlns:operNS="http://services" returnQName="retNS:signupReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:firstName" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastName" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:gender" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:dob" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getnewsFeedData" qname="operNS:getnewsFeedData" xmlns:operNS="http://services" returnQName="retNS:getnewsFeedDataReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:userName" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getWorkInfo" qname="operNS:getWorkInfo" xmlns:operNS="http://services" returnQName="retNS:getWorkInfoReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getUserProfile" qname="operNS:getUserProfile" xmlns:operNS="http://services" returnQName="retNS:getUserProfileReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="rejectRequest" qname="operNS:rejectRequest" xmlns:operNS="http://services" returnQName="retNS:rejectRequestReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:senderId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAddFriends" qname="operNS:getAddFriends" xmlns:operNS="http://services" returnQName="retNS:getAddFriendsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="approveRequest" qname="operNS:approveRequest" xmlns:operNS="http://services" returnQName="retNS:approveRequestReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userName" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:userId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:senderId" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getFriendRequests sendFriendRequest main getnewsFeedData signup getUserProfile approveRequest rejectRequest getAddFriends getFriends getContactInfo getWorkInfo validate"/>
+
+  </service>
+</deployment>

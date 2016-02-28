@@ -1,0 +1,110 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="F:\Nodeexample\Self-proclaimed-Tester\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\faceboook-ws\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="User" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="main" qname="ns1:main" soapAction="" xmlns:ns1="http://services" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:args" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:operation name="validate" qname="ns2:validate" returnQName="ns2:validateReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:email" type="xsd:string"/>
+   <ns1:parameter qname="ns2:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getFriends" qname="ns3:getFriends" returnQName="ns3:getFriendsReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="sendFriendRequest" qname="ns4:sendFriendRequest" returnQName="ns4:sendFriendRequestReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:senderId" type="xsd:int"/>
+   <ns1:parameter qname="ns4:recieverId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getFriendRequests" qname="ns5:getFriendRequests" returnQName="ns5:getFriendRequestsReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getContactInfo" qname="ns6:getContactInfo" returnQName="ns6:getContactInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="signup" qname="ns7:signup" returnQName="ns7:signupReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:email" type="xsd:string"/>
+   <ns1:parameter qname="ns7:password" type="xsd:string"/>
+   <ns1:parameter qname="ns7:gender" type="xsd:string"/>
+   <ns1:parameter qname="ns7:dob" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getnewsFeedData" qname="ns8:getnewsFeedData" returnQName="ns8:getnewsFeedDataReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:userId" type="xsd:int"/>
+   <ns1:parameter qname="ns8:userName" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getWorkInfo" qname="ns9:getWorkInfo" returnQName="ns9:getWorkInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getUserProfile" qname="ns10:getUserProfile" returnQName="ns10:getUserProfileReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="rejectRequest" qname="ns11:rejectRequest" returnQName="ns11:rejectRequestReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:userId" type="xsd:int"/>
+   <ns1:parameter qname="ns11:senderId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getAddFriends" qname="ns12:getAddFriends" returnQName="ns12:getAddFriendsReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="approveRequest" qname="ns13:approveRequest" returnQName="ns13:approveRequestReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns13:userId" type="xsd:int"/>
+   <ns1:parameter qname="ns13:senderId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getFriendRequests sendFriendRequest main getnewsFeedData signup getUserProfile approveRequest rejectRequest getAddFriends getFriends getContactInfo getWorkInfo validate"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="User"/>
+  <ns1:parameter name="className" value="services.User"/>
+  <ns1:parameter name="wsdlServicePort" value="User"/>
+  <ns1:parameter name="schemaQualified" value="http://services"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services"/>
+  <ns1:parameter name="wsdlServiceElement" value="UserService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

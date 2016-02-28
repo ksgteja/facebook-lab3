@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services" xmlns:intf="http://services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="main">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="args" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mainResponse">
+    <complexType/>
+   </element>
+   <element name="validate">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validateResponse">
+    <complexType>
+     <sequence>
+      <element name="validateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFriends">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFriendsResponse">
+    <complexType>
+     <sequence>
+      <element name="getFriendsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sendFriendRequest">
+    <complexType>
+     <sequence>
+      <element name="senderId" type="xsd:int"/>
+      <element name="recieverId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sendFriendRequestResponse">
+    <complexType>
+     <sequence>
+      <element name="sendFriendRequestReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFriendRequests">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFriendRequestsResponse">
+    <complexType>
+     <sequence>
+      <element name="getFriendRequestsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContactInfo">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getContactInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getContactInfoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signup">
+    <complexType>
+     <sequence>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="gender" type="xsd:string"/>
+      <element name="dob" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signupResponse">
+    <complexType>
+     <sequence>
+      <element name="signupReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getnewsFeedData">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+      <element name="userName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getnewsFeedDataResponse">
+    <complexType>
+     <sequence>
+      <element name="getnewsFeedDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getWorkInfo">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getWorkInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getWorkInfoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserProfile">
+    <complexType/>
+   </element>
+   <element name="getUserProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserProfileReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="rejectRequest">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+      <element name="senderId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="rejectRequestResponse">
+    <complexType>
+     <sequence>
+      <element name="rejectRequestReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAddFriends">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAddFriendsResponse">
+    <complexType>
+     <sequence>
+      <element name="getAddFriendsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="approveRequest">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="userId" type="xsd:int"/>
+      <element name="senderId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="approveRequestResponse">
+    <complexType>
+     <sequence>
+      <element name="approveRequestReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getnewsFeedDataResponse">
+
+      <wsdl:part element="impl:getnewsFeedDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainResponse">
+
+      <wsdl:part element="impl:mainResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFriendRequestsRequest">
+
+      <wsdl:part element="impl:getFriendRequests" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFriendsResponse">
+
+      <wsdl:part element="impl:getFriendsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFriendsRequest">
+
+      <wsdl:part element="impl:getFriends" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendFriendRequestRequest">
+
+      <wsdl:part element="impl:sendFriendRequest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWorkInfoRequest">
+
+      <wsdl:part element="impl:getWorkInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="rejectRequestResponse">
+
+      <wsdl:part element="impl:rejectRequestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validateResponse">
+
+      <wsdl:part element="impl:validateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="approveRequestResponse">
+
+      <wsdl:part element="impl:approveRequestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainRequest">
+
+      <wsdl:part element="impl:main" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContactInfoRequest">
+
+      <wsdl:part element="impl:getContactInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAddFriendsResponse">
+
+      <wsdl:part element="impl:getAddFriendsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserProfileResponse">
+
+      <wsdl:part element="impl:getUserProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getnewsFeedDataRequest">
+
+      <wsdl:part element="impl:getnewsFeedData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFriendRequestsResponse">
+
+      <wsdl:part element="impl:getFriendRequestsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signupRequest">
+
+      <wsdl:part element="impl:signup" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAddFriendsRequest">
+
+      <wsdl:part element="impl:getAddFriends" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signupResponse">
+
+      <wsdl:part element="impl:signupResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getWorkInfoResponse">
+
+      <wsdl:part element="impl:getWorkInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendFriendRequestResponse">
+
+      <wsdl:part element="impl:sendFriendRequestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validateRequest">
+
+      <wsdl:part element="impl:validate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="rejectRequestRequest">
+
+      <wsdl:part element="impl:rejectRequest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContactInfoResponse">
+
+      <wsdl:part element="impl:getContactInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="approveRequestRequest">
+
+      <wsdl:part element="impl:approveRequest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserProfileRequest">
+
+      <wsdl:part element="impl:getUserProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="User">
+
+      <wsdl:operation name="main">
+
+         <wsdl:input message="impl:mainRequest" name="mainRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:mainResponse" name="mainResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validate">
+
+         <wsdl:input message="impl:validateRequest" name="validateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:validateResponse" name="validateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFriends">
+
+         <wsdl:input message="impl:getFriendsRequest" name="getFriendsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFriendsResponse" name="getFriendsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendFriendRequest">
+
+         <wsdl:input message="impl:sendFriendRequestRequest" name="sendFriendRequestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sendFriendRequestResponse" name="sendFriendRequestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFriendRequests">
+
+         <wsdl:input message="impl:getFriendRequestsRequest" name="getFriendRequestsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFriendRequestsResponse" name="getFriendRequestsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContactInfo">
+
+         <wsdl:input message="impl:getContactInfoRequest" name="getContactInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getContactInfoResponse" name="getContactInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signup">
+
+         <wsdl:input message="impl:signupRequest" name="signupRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signupResponse" name="signupResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getnewsFeedData">
+
+         <wsdl:input message="impl:getnewsFeedDataRequest" name="getnewsFeedDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getnewsFeedDataResponse" name="getnewsFeedDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWorkInfo">
+
+         <wsdl:input message="impl:getWorkInfoRequest" name="getWorkInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getWorkInfoResponse" name="getWorkInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserProfile">
+
+         <wsdl:input message="impl:getUserProfileRequest" name="getUserProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserProfileResponse" name="getUserProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rejectRequest">
+
+         <wsdl:input message="impl:rejectRequestRequest" name="rejectRequestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:rejectRequestResponse" name="rejectRequestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAddFriends">
+
+         <wsdl:input message="impl:getAddFriendsRequest" name="getAddFriendsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAddFriendsResponse" name="getAddFriendsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="approveRequest">
+
+         <wsdl:input message="impl:approveRequestRequest" name="approveRequestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:approveRequestResponse" name="approveRequestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="UserSoapBinding" type="impl:User">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="main">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mainRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mainResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFriends">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFriendsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFriendsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendFriendRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sendFriendRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sendFriendRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFriendRequests">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFriendRequestsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFriendRequestsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContactInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getContactInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContactInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signup">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signupRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signupResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getnewsFeedData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getnewsFeedDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getnewsFeedDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getWorkInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getWorkInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getWorkInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="rejectRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="rejectRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="rejectRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAddFriends">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAddFriendsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAddFriendsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="approveRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="approveRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="approveRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="UserService">
+
+      <wsdl:port binding="impl:UserSoapBinding" name="User">
+
+         <wsdlsoap:address location="http://localhost:8080/faceboook-ws/services/User"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
